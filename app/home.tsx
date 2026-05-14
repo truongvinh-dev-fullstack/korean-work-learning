@@ -12,8 +12,8 @@ import { HomeActionButton } from '@/components/HomeActionButton';
 import { ProgressBox } from '@/components/ProgressBox';
 import { colors } from '@/constants/colors';
 import { radius, spacing } from '@/constants/spacing';
-import { getNextLesson } from '@/data/lessonCatalog';
 import { useAppProgress } from '@/hooks/use-app-progress';
+import { getNextLesson } from '@/services/lessonService';
 import { appStorage, defaultLessonProgress } from '@/storage/appStorage';
 import type { DailyLesson, LessonProgress, UserLevel } from '@/types';
 
@@ -69,8 +69,8 @@ export default function HomeScreen() {
         setLessonProgress(storedLessonProgress);
         setNextLesson(
           getNextLesson(
-            storedLessonProgress.completedLessonIds,
-            storedLessonProgress.currentLessonDay
+            storedLessonProgress.currentLessonDay,
+            storedLessonProgress.completedLessonIds
           )
         );
       });

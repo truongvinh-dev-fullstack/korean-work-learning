@@ -9,9 +9,9 @@ import { AppScreen } from '@/components/AppScreen';
 import { AppText } from '@/components/AppText';
 import { colors } from '@/constants/colors';
 import { radius, spacing } from '@/constants/spacing';
-import { lessonCatalog } from '@/data/lessonCatalog';
+import { getAllLessons } from '@/services/lessonService';
 import { appStorage, defaultLessonProgress } from '@/storage/appStorage';
-import type { LessonProgress, UserLevel } from '@/types';
+import type { KoreanLesson, LessonProgress, UserLevel } from '@/types';
 
 const levelLabels: Record<UserLevel, string> = {
   basic_review: 'Ôn nền tảng',
@@ -19,9 +19,9 @@ const levelLabels: Record<UserLevel, string> = {
   listening_speaking: 'Nghe nói tăng tốc',
 };
 
-function getLessonState(index: number, completedLessonIds: string[]) {
-  const lesson = lessonCatalog[index];
-  const previousLesson = lessonCatalog[index - 1];
+function getLessonState(lessons: KoreanLesson[], index: number, completedLessonIds: string[]) {
+  const lesson = lessons[index];
+  const previousLesson = lessons[index - 1];
   const isCompleted = completedLessonIds.includes(lesson.id);
   const isUnlocked =
     index === 0 ||
@@ -56,6 +56,7 @@ function getLessonState(index: number, completedLessonIds: string[]) {
 
 export default function LessonsScreen() {
   const [lessonProgress, setLessonProgress] = useState<LessonProgress>(defaultLessonProgress);
+  const [lessons, setLessons] = useState<KoreanLesson[]>([]);
 
   useFocusEffect(
     useCallback(() => {
@@ -66,6 +67,7 @@ export default function LessonsScreen() {
           return;
         }
 
+        setLessons(getAllLessons());
         setLessonProgress(storedLessonProgress);
       });
 
@@ -80,8 +82,19 @@ export default function LessonsScreen() {
       title="Lộ trình học"
       subtitle="Học từng bài theo thứ tự. Bài tiếp theo sẽ mở khi bạn hoàn thành bài trước.">
       <View style={styles.list}>
-        {lessonCatalog.map((lesson, index) => {
-          const state = getLessonState(index, lessonProgress.completedLessonIds);
+        {lessons.length === 0 ? (
+          <AppCard style={styles.emptyCard}>
+            <AppText variant="subtitle" style={styles.centerText}>
+              Chua co lesson
+            </AppText>
+            <AppText color={colors.textMuted} style={styles.centerText}>
+              Hay them du lieu vao Excel roi chay lenh convert de tao lessons.json.
+            </AppText>
+          </AppCard>
+        ) : null}
+
+        {lessons.map((lesson, index) => {
+          const state = getLessonState(lessons, index, lessonProgress.completedLessonIds);
 
           return (
             <Pressable
@@ -178,5 +191,14 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     height: 4,
     width: 4,
+  },
+  emptyCard: {
+    alignItems: 'center',
+    gap: spacing.md,
+    justifyContent: 'center',
+    minHeight: 160,
+  },
+  centerText: {
+    textAlign: 'center',
   },
 });

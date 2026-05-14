@@ -1,5 +1,7 @@
 export type UserLevel = 'basic_review' | 'work_communication' | 'listening_speaking';
 
+export type LessonCategory = 'daily_work' | 'work_dialogue' | 'business_korean';
+
 export type LevelTestQuestion = {
   id: string;
   question: string;
@@ -16,8 +18,15 @@ export type DailyLessonWord = {
 };
 
 export type DailyLessonSentence = {
+  id?: string;
   korean: string;
   meaningVi: string;
+};
+
+export type LessonGrammar = {
+  title: string;
+  explanationVi: string;
+  examples: string[];
 };
 
 export type DailyLessonQuizQuestion = {
@@ -39,6 +48,12 @@ export type DailyLesson = {
   sentences: DailyLessonSentence[];
   grammarTip: string;
   quiz: DailyLessonQuizQuestion[];
+};
+
+export type KoreanLesson = DailyLesson & {
+  category: LessonCategory;
+  objectives: string[];
+  grammar: LessonGrammar;
 };
 
 export type LessonProgress = {

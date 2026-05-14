@@ -1,0 +1,180 @@
+[
+  {
+    "id": "day-1-work-greeting",
+    "dayNumber": 1,
+    "category": "daily_work",
+    "level": "basic_review",
+    "title": "Chao hoi va bat dau ngay lam",
+    "description": "Lam quen voi loi chao va cac tu co ban o noi lam viec.",
+    "estimatedMinutes": 5,
+    "objectives": [
+      "Chao dong nghiep mot cach lich su",
+      "Hoi va xac nhan viec can lam dau ngay",
+      "Dung duoi cau lich su trong moi truong cong viec"
+    ],
+    "words": [
+      {
+        "id": "day-1-meeting",
+        "korean": "회의",
+        "pronunciation": "hoe-ui",
+        "meaningVi": "cuoc hop",
+        "example": "오늘 회의가 있어요."
+      },
+      {
+        "id": "day-1-document",
+        "korean": "자료",
+        "pronunciation": "ja-ryo",
+        "meaningVi": "tai lieu",
+        "example": "자료를 보내 주세요."
+      },
+      {
+        "id": "day-1-confirm",
+        "korean": "확인하다",
+        "pronunciation": "hwak-in-ha-da",
+        "meaningVi": "kiem tra, xac nhan",
+        "example": "메일을 확인했어요."
+      }
+    ],
+    "sentences": [
+      {
+        "id": "day-1-sentence-1",
+        "korean": "안녕하세요. 좋은 아침입니다.",
+        "meaningVi": "Xin chao. Chuc buoi sang tot lanh."
+      },
+      {
+        "id": "day-1-sentence-2",
+        "korean": "오늘 회의는 몇 시에 시작해요?",
+        "meaningVi": "Hom nay cuoc hop bat dau luc may gio?"
+      },
+      {
+        "id": "day-1-sentence-3",
+        "korean": "확인하고 다시 말씀드리겠습니다.",
+        "meaningVi": "Toi se kiem tra va bao lai sau."
+      }
+    ],
+    "grammar": {
+      "title": "Duoi cau -getseumnida",
+      "explanationVi": "Duoi cau -getseumnida dung trong moi truong cong viec de noi lich su ve viec minh se lam.",
+      "examples": [
+        "확인하겠습니다.",
+        "보내 드리겠습니다."
+      ]
+    },
+    "grammarTip": "Duoi cau -getseumnida dung trong moi truong cong viec de noi lich su ve viec minh se lam.",
+    "quiz": [
+      {
+        "id": "day-1-quiz-1",
+        "question": "\"회의\" nghia la gi?",
+        "options": [
+          "Cuoc hop",
+          "Tai lieu",
+          "Lich trinh",
+          "Dong nghiep"
+        ],
+        "correctAnswer": "Cuoc hop",
+        "explanationVi": "\"회의\" la cuoc hop, thuong gap trong moi truong cong so."
+      },
+      {
+        "id": "day-1-quiz-2",
+        "question": "Cau nao dung de noi \"Toi se kiem tra va bao lai sau\"?",
+        "options": [
+          "확인하고 다시 말씀드리겠습니다.",
+          "지금 집에 갑니다.",
+          "커피를 마시겠습니다.",
+          "내일 쉬겠습니다."
+        ],
+        "correctAnswer": "확인하고 다시 말씀드리겠습니다.",
+        "explanationVi": "Cau nay dung de bao lai mot cach lich su."
+      }
+    ]
+  },
+  {
+    "id": "day-2-ask-task",
+    "dayNumber": 2,
+    "category": "work_dialogue",
+    "level": "basic_review",
+    "title": "Hoi viec can lam",
+    "description": "Luyen cach hoi uu tien cong viec va nhiem vu trong ngay.",
+    "estimatedMinutes": 5,
+    "objectives": [
+      "Hoi viec can lam truoc",
+      "Nhan nhiem vu mot cach tu nhien",
+      "Luyen cau tra loi ngan trong cong viec"
+    ],
+    "words": [
+      {
+        "id": "day-2-task",
+        "korean": "업무",
+        "pronunciation": "eop-mu",
+        "meaningVi": "cong viec, nghiep vu",
+        "example": "오늘 어떤 업무를 먼저 하면 될까요?"
+      },
+      {
+        "id": "day-2-coworker",
+        "korean": "동료",
+        "pronunciation": "dong-ryo",
+        "meaningVi": "dong nghiep",
+        "example": "동료에게 물어보겠습니다."
+      },
+      {
+        "id": "day-2-request",
+        "korean": "요청",
+        "pronunciation": "yo-cheong",
+        "meaningVi": "yeu cau",
+        "example": "요청하신 일을 하겠습니다."
+      }
+    ],
+    "sentences": [
+      {
+        "id": "day-2-sentence-1",
+        "korean": "오늘 제가 먼저 해야 할 일이 뭐예요?",
+        "meaningVi": "Hom nay viec toi can lam truoc la gi a?"
+      },
+      {
+        "id": "day-2-sentence-2",
+        "korean": "먼저 이 자료를 확인해 주세요.",
+        "meaningVi": "Truoc tien hay kiem tra tai lieu nay giup toi."
+      },
+      {
+        "id": "day-2-sentence-3",
+        "korean": "네, 바로 확인하겠습니다.",
+        "meaningVi": "Vang, toi se kiem tra ngay."
+      }
+    ],
+    "grammar": {
+      "title": "Mau cau -hamyeon doelkkayo?",
+      "explanationVi": "Mau -hamyeon doelkkayo? dung de hoi minh nen lam gi hoac lam nhu vay co duoc khong mot cach mem va lich su.",
+      "examples": [
+        "무엇을 먼저 하면 될까요?",
+        "이 자료를 확인하면 될까요?"
+      ]
+    },
+    "grammarTip": "Mau -hamyeon doelkkayo? dung de hoi minh nen lam gi hoac lam nhu vay co duoc khong mot cach mem va lich su.",
+    "quiz": [
+      {
+        "id": "day-2-quiz-1",
+        "question": "\"업무\" nghia la gi?",
+        "options": [
+          "Cong viec",
+          "Ngay nghi",
+          "Bua trua",
+          "Cua hang"
+        ],
+        "correctAnswer": "Cong viec",
+        "explanationVi": "\"업무\" thuong chi cong viec hoac nhiem vu."
+      },
+      {
+        "id": "day-2-quiz-2",
+        "question": "Cau nao phu hop khi hoi viec can lam truoc?",
+        "options": [
+          "오늘 제가 먼저 해야 할 일이 뭐예요?",
+          "안녕하세요. 좋은 아침입니다.",
+          "커피가 맛있어요.",
+          "내일은 토요일입니다."
+        ],
+        "correctAnswer": "오늘 제가 먼저 해야 할 일이 뭐예요?",
+        "explanationVi": "Cau nay hoi truc tiep viec can lam truoc trong ngay."
+      }
+    ]
+  }
+]

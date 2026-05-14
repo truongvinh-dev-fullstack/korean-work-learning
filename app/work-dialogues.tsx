@@ -8,10 +8,11 @@ import { AppText } from '@/components/AppText';
 import { SpeakButton } from '@/components/SpeakButton';
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
-import { mockWorkDialogues } from '@/data/mockWorkDialogues';
+import { getWorkDialogues } from '@/services/lessonService';
 import { appStorage } from '@/storage/appStorage';
 
 export default function WorkDialoguesScreen() {
+  const dialogues = getWorkDialogues();
   const [practicedDialogueIds, setPracticedDialogueIds] = useState<Set<string>>(() => new Set());
   const [savingDialogueId, setSavingDialogueId] = useState<string | null>(null);
 
@@ -38,7 +39,18 @@ export default function WorkDialoguesScreen() {
     <AppScreen
       title="Hội thoại công việc"
       subtitle="Luyện nhanh các câu dùng trong tình huống đi làm hằng ngày.">
-      {mockWorkDialogues.map((dialogue, index) => {
+      {dialogues.length === 0 ? (
+        <AppCard style={styles.emptyCard}>
+          <AppText variant="subtitle" style={styles.centerText}>
+            Chua co hoi thoai
+          </AppText>
+          <AppText color={colors.textMuted} style={styles.centerText}>
+            Hay them sentence vao lessons.xlsx roi chay convert de tao du lieu luyen tap.
+          </AppText>
+        </AppCard>
+      ) : null}
+
+      {dialogues.map((dialogue, index) => {
         const isPracticed = practicedDialogueIds.has(dialogue.id);
         const isSaving = savingDialogueId === dialogue.id;
 
@@ -146,5 +158,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     gap: spacing.sm,
     padding: spacing.md,
+  },
+  emptyCard: {
+    alignItems: 'center',
+    gap: spacing.md,
+    justifyContent: 'center',
+    minHeight: 180,
+  },
+  centerText: {
+    textAlign: 'center',
   },
 });

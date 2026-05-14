@@ -12,7 +12,7 @@ import { QuizCard } from '@/components/QuizCard';
 import { SpeakButton } from '@/components/SpeakButton';
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
-import { getLessonById, getNextLesson } from '@/data/lessonCatalog';
+import { getLessonById, getNextLesson } from '@/services/lessonService';
 import { appStorage } from '@/storage/appStorage';
 import type { DailyLesson } from '@/types';
 
@@ -36,7 +36,7 @@ export default function DailyLessonScreen() {
         const selectedLesson = routeLessonId ? getLessonById(routeLessonId) : null;
         const nextLesson =
           selectedLesson ??
-          getNextLesson(lessonProgress.completedLessonIds, lessonProgress.currentLessonDay);
+          getNextLesson(lessonProgress.currentLessonDay, lessonProgress.completedLessonIds);
 
         if (!isActive) {
           return;
@@ -130,8 +130,8 @@ export default function DailyLessonScreen() {
       </LessonCard>
 
       <LessonCard step={2} title="Câu giao tiếp">
-        {lesson.sentences.map((sentence) => (
-          <View key={sentence.korean} style={styles.sentenceItem}>
+        {lesson.sentences.map((sentence, index) => (
+          <View key={sentence.id ?? `${sentence.korean}-${index}`} style={styles.sentenceItem}>
             <View style={styles.row}>
               <AppText variant="subtitle" style={styles.flexText}>
                 {sentence.korean}
