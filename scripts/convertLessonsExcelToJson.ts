@@ -13,6 +13,16 @@ const outputPath = path.resolve(process.cwd(), 'assets/data/lessons.json');
 
 const requiredSheets = ['Lessons', 'Words', 'Sentences', 'Grammar', 'Quiz'] as const;
 
+const categoryAliases: Record<string, LessonCategory> = {
+  'business-english': 'business_english',
+  business_english: 'business_english',
+  'daily-work': 'daily_work',
+  daily_work: 'daily_work',
+  'work-dialogue': 'work_dialogue',
+  work_dialogue: 'work_dialogue',
+  'work-english': 'business_english',
+};
+
 function asString(value: unknown): string {
   if (value === null || value === undefined) {
     return '';
@@ -75,6 +85,21 @@ function normalizeCorrectAnswer(row: ExcelRow, options: string[]) {
   return correctAnswer;
 }
 
+function normalizeCategory(value: unknown): LessonCategory {
+  const rawCategory = asString(value);
+  return categoryAliases[rawCategory] ?? (rawCategory as LessonCategory);
+}
+
+function buildScopedId(lessonId: string, value: unknown, fallbackPrefix: string, index: number) {
+  const rawId = asString(value) || `${fallbackPrefix}${index + 1}`;
+
+  if (rawId.startsWith(`${lessonId}_`)) {
+    return rawId;
+  }
+
+  return `${lessonId}_${rawId}`;
+}
+
 function buildGrammar(row: ExcelRow | undefined): LessonGrammar {
   return {
     title: asString(row?.title),
@@ -103,14 +128,14 @@ function buildLessons(workbook: XLSX.WorkBook): EnglishLesson[] {
     return {
       id: lessonId,
       dayNumber: asNumber(lessonRow.dayNumber),
-      category: asString(lessonRow.category) as LessonCategory,
+      category: normalizeCategory(lessonRow.category),
       level: asString(lessonRow.level) as UserLevel,
       title: asString(lessonRow.title),
       description: asString(lessonRow.description),
       estimatedMinutes: asNumber(lessonRow.estimatedMinutes),
       objectives: splitList(lessonRow.objectives),
-      words: (wordsByLessonId[lessonId] ?? []).map((wordRow) => ({
-        id: asString(wordRow.id),
+      words: (wordsByLessonId[lessonId] ?? []).map((wordRow, index) => ({
+        id: buildScopedId(lessonId, wordRow.id, 'W', index),
         english: asString(wordRow.english || wordRow.korean),
         pronunciation: asString(wordRow.pronunciation),
         meaningVi: asString(wordRow.meaningVi),
