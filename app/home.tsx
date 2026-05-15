@@ -50,8 +50,13 @@ const homeActions = [
     href: '/writing-practice' as const,
   },
   {
+    title: 'Luyện nói',
+    description: 'Nghe mẫu, ghi âm shadowing và tự đánh giá giọng đọc của bạn.',
+    href: '/speaking-practice' as const,
+  },
+  {
     title: 'Tiến độ học',
-    description: 'Xem streak, số từ đã học, số câu đã luyện và câu đã viết.',
+    description: 'Xem streak, số từ đã học, số câu đã luyện, câu đã viết và luyện nói.',
     href: '/progress' as const,
   },
 ];

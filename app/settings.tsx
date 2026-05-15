@@ -10,6 +10,7 @@ import { AppText } from '@/components/AppText';
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
 import { appStorage, defaultProgress } from '@/storage/appStorage';
+import { speakingStorage } from '@/storage/speakingStorage';
 import type { AppProgress, UserLevel } from '@/types';
 
 const levelLabels: Record<UserLevel, string> = {
@@ -65,7 +66,7 @@ export default function SettingsScreen() {
     setIsResettingAll(true);
 
     try {
-      await appStorage.resetProgress();
+      await Promise.all([appStorage.resetProgress(), speakingStorage.resetSpeakingProgress()]);
       router.replace('/onboarding');
     } catch (error) {
       setIsResettingAll(false);

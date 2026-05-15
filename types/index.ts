@@ -117,5 +117,6 @@ export type LearningRoute = {
     | '/flashcards'
     | '/work-dialogues'
     | '/writing-practice'
+    | '/speaking-practice'
     | '/progress';
 };

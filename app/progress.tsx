@@ -11,6 +11,7 @@ import { ProgressBox } from '@/components/ProgressBox';
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
 import { appStorage, defaultProgress } from '@/storage/appStorage';
+import { speakingStorage, type SpeakingPracticeStats } from '@/storage/speakingStorage';
 import type { AppProgress, UserLevel, WordProgress, WordProgressMap, WordProgressStatus } from '@/types';
 
 const levelLabels: Record<UserLevel, string> = {
@@ -43,6 +44,12 @@ function sortReviewWords(words: WordProgress[]) {
 export default function ProgressScreen() {
   const [progress, setProgress] = useState<AppProgress>(defaultProgress);
   const [wordProgressMap, setWordProgressMap] = useState<WordProgressMap>({});
+  const [speakingStats, setSpeakingStats] = useState<SpeakingPracticeStats>({
+    needPracticeCount: 0,
+    speakingStreak: 0,
+    totalPracticeAttempts: 0,
+    totalPracticedSentences: 0,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [isResetting, setIsResetting] = useState(false);
 
@@ -50,13 +57,15 @@ export default function ProgressScreen() {
     setIsLoading(true);
 
     try {
-      const [storedProgress, storedWordProgress] = await Promise.all([
+      const [storedProgress, storedWordProgress, storedSpeakingStats] = await Promise.all([
         appStorage.getProgress(),
         appStorage.getWordProgress(),
+        speakingStorage.getSpeakingStats(),
       ]);
 
       setProgress(storedProgress);
       setWordProgressMap(storedWordProgress);
+      setSpeakingStats(storedSpeakingStats);
     } finally {
       setIsLoading(false);
     }
@@ -113,6 +122,18 @@ export default function ProgressScreen() {
         <ProgressBox
           label="Tổng câu đã viết"
           value={isLoading ? '-' : progress.writingPracticeCount}
+        />
+        <ProgressBox
+          label="Tổng câu đã luyện nói"
+          value={isLoading ? '-' : speakingStats.totalPracticedSentences}
+        />
+        <ProgressBox
+          label="Câu nói cần luyện thêm"
+          value={isLoading ? '-' : speakingStats.needPracticeCount}
+        />
+        <ProgressBox
+          label="Streak luyện nói"
+          value={isLoading ? '-' : `${speakingStats.speakingStreak} ngày`}
         />
         <ProgressBox label="Số từ nhớ" value={isLoading ? '-' : rememberedCount} />
         <ProgressBox label="Số từ mơ hồ" value={isLoading ? '-' : unsureCount} />

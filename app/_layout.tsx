@@ -49,6 +49,10 @@ export default function RootLayout() {
           options={{ title: 'Luyện viết', headerTintColor: colors.primaryDark }}
         />
         <Stack.Screen
+          name="speaking-practice"
+          options={{ title: 'Luyện nói', headerTintColor: colors.primaryDark }}
+        />
+        <Stack.Screen
           name="progress"
           options={{ title: 'Tiến độ học tập', headerTintColor: colors.primaryDark }}
         />
