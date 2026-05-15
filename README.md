@@ -16,6 +16,36 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
+## Cac lenh can dung
+
+```bash
+# Cai dependencies
+npm install
+
+# Chay app voi Expo
+npm run start
+
+# Chay tren Android emulator/device
+npm run android
+
+# Chay tren iOS simulator
+npm run ios
+
+# Chay ban web
+npm run web
+
+# Kiem tra lint
+npm run lint
+
+# Convert du lieu bai hoc tu Excel sang JSON
+npm run convert-lessons -- sample-lessons.xlsx
+
+# Reset ve project mau cua Expo
+npm run reset-project
+```
+
+Lenh `convert-lessons` se doc file Excel dau vao va ghi du lieu bai hoc ra `assets/data/lessons.json`.
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

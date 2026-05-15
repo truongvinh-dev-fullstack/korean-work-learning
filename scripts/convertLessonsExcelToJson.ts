@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import * as XLSX from 'xlsx';
 
-import type { KoreanLesson, LessonCategory, LessonGrammar, UserLevel } from '@/types';
+import type { EnglishLesson, LessonCategory, LessonGrammar, UserLevel } from '@/types';
 import { validateLessons } from '@/utils/validateLessons';
 
 type ExcelRow = Record<string, unknown>;
@@ -83,7 +83,7 @@ function buildGrammar(row: ExcelRow | undefined): LessonGrammar {
   };
 }
 
-function buildLessons(workbook: XLSX.WorkBook): KoreanLesson[] {
+function buildLessons(workbook: XLSX.WorkBook): EnglishLesson[] {
   requiredSheets.forEach((sheetName) => {
     if (!workbook.SheetNames.includes(sheetName)) {
       console.warn(`[convert-lessons] Workbook does not contain required sheet "${sheetName}".`);
@@ -111,14 +111,14 @@ function buildLessons(workbook: XLSX.WorkBook): KoreanLesson[] {
       objectives: splitList(lessonRow.objectives),
       words: (wordsByLessonId[lessonId] ?? []).map((wordRow) => ({
         id: asString(wordRow.id),
-        korean: asString(wordRow.korean),
+        english: asString(wordRow.english || wordRow.korean),
         pronunciation: asString(wordRow.pronunciation),
         meaningVi: asString(wordRow.meaningVi),
         example: asString(wordRow.example),
       })),
       sentences: (sentencesByLessonId[lessonId] ?? []).map((sentenceRow) => ({
         id: asString(sentenceRow.id),
-        korean: asString(sentenceRow.korean),
+        english: asString(sentenceRow.english || sentenceRow.korean),
         meaningVi: asString(sentenceRow.meaningVi),
       })),
       grammar,

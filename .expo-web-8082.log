@@ -1,0 +1,24 @@
+
+> english-work-learning@1.0.0 web
+> expo start --web --port 8082
+
+Starting project at D:\Vinh\NewAppVersion\korean-work-learning
+React Compiler enabled
+Starting Metro Bundler
+Waiting on http://localhost:8082
+Logs for your project will appear below.
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ node_modules\expo-router\node\render.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 65.1% (451/559)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 77.4% (564/648)
+λ Bundled 6540ms node_modules\expo-router\node\render.js (1202 modules)
+λ Bundled 2656ms node_modules\expo-router\node\render.js (1 module)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (1192/1192)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 10579ms node_modules\expo-router\entry.js (1192 modules)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (1192/1192)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 6640ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 2361ms node_modules\expo-router\entry.js (1181 modules)
+ LOG  [web] Logs will appear in the browser console

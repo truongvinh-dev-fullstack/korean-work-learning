@@ -18,8 +18,10 @@ const STORAGE_KEYS = {
   streak: 'streak',
   learnedWordsCount: 'learnedWordsCount',
   practicedSentencesCount: 'practicedSentencesCount',
+  writingPracticeCount: 'writingPracticeCount',
   flashcardReviews: 'flashcardReviews',
   wordProgress: 'wordProgress',
+  completedWritingPromptIds: 'completedWritingPromptIds',
   completedLessonIds: 'completedLessonIds',
   currentLessonDay: 'currentLessonDay',
   lastStudyDate: 'lastStudyDate',
@@ -32,6 +34,7 @@ export const defaultProgress: AppProgress = {
   streak: 0,
   learnedWordsCount: 0,
   practicedSentencesCount: 0,
+  writingPracticeCount: 0,
 };
 
 export const defaultLessonProgress: LessonProgress = {
@@ -92,11 +95,12 @@ function parseWordProgress(value: string | null): WordProgressMap {
         return progress;
       }
 
-      const candidate = item as Partial<WordProgress>;
+      const candidate = item as Partial<WordProgress> & { korean?: unknown };
+      const english = candidate.english ?? candidate.korean;
 
       if (
         candidate.wordId === wordId &&
-        typeof candidate.korean === 'string' &&
+        typeof english === 'string' &&
         typeof candidate.pronunciation === 'string' &&
         typeof candidate.meaningVi === 'string' &&
         typeof candidate.example === 'string' &&
@@ -107,7 +111,7 @@ function parseWordProgress(value: string | null): WordProgressMap {
       ) {
         progress[wordId] = {
           wordId,
-          korean: candidate.korean,
+          english,
           pronunciation: candidate.pronunciation,
           meaningVi: candidate.meaningVi,
           example: candidate.example,
@@ -127,7 +131,7 @@ function parseWordProgress(value: string | null): WordProgressMap {
 function createWordProgressItem(word: DailyLessonWord): WordProgress {
   return {
     wordId: word.id,
-    korean: word.korean,
+    english: word.english,
     pronunciation: word.pronunciation,
     meaningVi: word.meaningVi,
     example: word.example,
@@ -161,6 +165,7 @@ export const appStorage = {
       streak,
       learnedWordsCount,
       practicedSentencesCount,
+      writingPracticeCount,
     ] =
       await Promise.all([
         getBoolean(STORAGE_KEYS.hasCompletedOnboarding, defaultProgress.hasCompletedOnboarding),
@@ -172,6 +177,7 @@ export const appStorage = {
           STORAGE_KEYS.practicedSentencesCount,
           defaultProgress.practicedSentencesCount
         ),
+        getNumber(STORAGE_KEYS.writingPracticeCount, defaultProgress.writingPracticeCount),
       ]);
 
     return {
@@ -181,6 +187,7 @@ export const appStorage = {
       streak,
       learnedWordsCount,
       practicedSentencesCount,
+      writingPracticeCount,
     };
   },
 
@@ -211,6 +218,10 @@ export const appStorage = {
 
   async setPracticedSentencesCount(value: number): Promise<void> {
     await setNumber(STORAGE_KEYS.practicedSentencesCount, value);
+  },
+
+  async setWritingPracticeCount(value: number): Promise<void> {
+    await setNumber(STORAGE_KEYS.writingPracticeCount, value);
   },
 
   async getLessonProgress(): Promise<LessonProgress> {
@@ -249,6 +260,35 @@ export const appStorage = {
     const nextCount = currentProgress.practicedSentencesCount + amount;
 
     await this.setPracticedSentencesCount(nextCount);
+
+    return nextCount;
+  },
+
+  async getCompletedWritingPromptIds(): Promise<string[]> {
+    const value = await AsyncStorage.getItem(STORAGE_KEYS.completedWritingPromptIds);
+    return parseStringArray(value);
+  },
+
+  async setCompletedWritingPromptIds(value: string[]): Promise<void> {
+    await AsyncStorage.setItem(STORAGE_KEYS.completedWritingPromptIds, JSON.stringify(value));
+  },
+
+  async completeWritingPrompt(promptId: string): Promise<number> {
+    const [currentProgress, completedWritingPromptIds] = await Promise.all([
+      this.getProgress(),
+      this.getCompletedWritingPromptIds(),
+    ]);
+
+    if (completedWritingPromptIds.includes(promptId)) {
+      return currentProgress.writingPracticeCount;
+    }
+
+    const nextCount = currentProgress.writingPracticeCount + 1;
+
+    await Promise.all([
+      this.setWritingPracticeCount(nextCount),
+      this.setCompletedWritingPromptIds([...completedWritingPromptIds, promptId]),
+    ]);
 
     return nextCount;
   },
@@ -328,6 +368,7 @@ export const appStorage = {
       streak: currentProgress.streak + 1,
       learnedWordsCount: currentProgress.learnedWordsCount + wordCount,
       practicedSentencesCount: currentProgress.practicedSentencesCount + sentenceCount,
+      writingPracticeCount: currentProgress.writingPracticeCount,
     };
 
     await Promise.all([
@@ -355,6 +396,7 @@ export const appStorage = {
         currentProgress.learnedWordsCount + (hasCompletedLesson ? 0 : lesson.words.length),
       practicedSentencesCount:
         currentProgress.practicedSentencesCount + (hasCompletedLesson ? 0 : lesson.sentences.length),
+      writingPracticeCount: currentProgress.writingPracticeCount,
     };
 
     await Promise.all([

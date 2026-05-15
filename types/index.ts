@@ -1,6 +1,6 @@
 export type UserLevel = 'basic_review' | 'work_communication' | 'listening_speaking';
 
-export type LessonCategory = 'daily_work' | 'work_dialogue' | 'business_korean';
+export type LessonCategory = 'daily_work' | 'work_dialogue' | 'business_english';
 
 export type LevelTestQuestion = {
   id: string;
@@ -11,7 +11,7 @@ export type LevelTestQuestion = {
 
 export type DailyLessonWord = {
   id: string;
-  korean: string;
+  english: string;
   pronunciation: string;
   meaningVi: string;
   example: string;
@@ -19,7 +19,7 @@ export type DailyLessonWord = {
 
 export type DailyLessonSentence = {
   id?: string;
-  korean: string;
+  english: string;
   meaningVi: string;
 };
 
@@ -50,7 +50,7 @@ export type DailyLesson = {
   quiz: DailyLessonQuizQuestion[];
 };
 
-export type KoreanLesson = DailyLesson & {
+export type EnglishLesson = DailyLesson & {
   category: LessonCategory;
   objectives: string[];
   grammar: LessonGrammar;
@@ -66,7 +66,7 @@ export type WordProgressStatus = 'new' | 'remembered' | 'unsure' | 'forgotten';
 
 export type WordProgress = {
   wordId: string;
-  korean: string;
+  english: string;
   pronunciation: string;
   meaningVi: string;
   example: string;
@@ -81,9 +81,19 @@ export type WorkDialogue = {
   id: string;
   title: string;
   contextVi: string;
-  koreanSentence: string;
+  englishSentence: string;
   meaningVi: string;
   suggestedReply: string;
+};
+
+export type WritingPrompt = {
+  id: string;
+  lessonId: string;
+  lessonTitle: string;
+  dayNumber: number;
+  targetEnglish: string;
+  meaningVi: string;
+  hint: string;
 };
 
 export type AppProgress = {
@@ -93,6 +103,7 @@ export type AppProgress = {
   streak: number;
   learnedWordsCount: number;
   practicedSentencesCount: number;
+  writingPracticeCount: number;
 };
 
 export type StorageKey = keyof AppProgress;
@@ -100,5 +111,11 @@ export type StorageKey = keyof AppProgress;
 export type LearningRoute = {
   title: string;
   description: string;
-  href: '/daily-lesson' | '/lessons' | '/flashcards' | '/work-dialogues' | '/progress';
+  href:
+    | '/daily-lesson'
+    | '/lessons'
+    | '/flashcards'
+    | '/work-dialogues'
+    | '/writing-practice'
+    | '/progress';
 };

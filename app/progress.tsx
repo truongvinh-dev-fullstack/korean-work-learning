@@ -36,7 +36,7 @@ function sortReviewWords(words: WordProgress[]) {
       return firstWord.status === 'forgotten' ? -1 : 1;
     }
 
-    return firstWord.korean.localeCompare(secondWord.korean);
+    return firstWord.english.localeCompare(secondWord.english);
   });
 }
 
@@ -97,7 +97,7 @@ export default function ProgressScreen() {
   return (
     <AppScreen
       title="Tiến độ học tập"
-      subtitle="Theo dõi nhịp học, số câu đã luyện và các từ cần ôn lại.">
+      subtitle="Theo dõi nhịp học, số câu đã luyện, bài viết và các từ cần ôn lại.">
       <View style={styles.statsGrid}>
         <ProgressBox
           label="Streak"
@@ -109,6 +109,10 @@ export default function ProgressScreen() {
         <ProgressBox
           label="Tổng câu đã luyện"
           value={isLoading ? '-' : progress.practicedSentencesCount}
+        />
+        <ProgressBox
+          label="Tổng câu đã viết"
+          value={isLoading ? '-' : progress.writingPracticeCount}
         />
         <ProgressBox label="Số từ nhớ" value={isLoading ? '-' : rememberedCount} />
         <ProgressBox label="Số từ mơ hồ" value={isLoading ? '-' : unsureCount} />
@@ -137,7 +141,7 @@ export default function ProgressScreen() {
               return (
                 <AppCard key={word.wordId} style={styles.reviewItem}>
                   <View style={styles.reviewCopy}>
-                    <AppText variant="korean">{word.korean}</AppText>
+                    <AppText variant="language">{word.english}</AppText>
                     <AppText variant="caption" color={colors.textMuted}>
                       {word.meaningVi}
                     </AppText>

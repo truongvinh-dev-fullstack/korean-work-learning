@@ -1,10 +1,10 @@
 # indexCodeBase
 
-Tai lieu nay tom tat cau truc codebase cua du an `korean-work-learning` de dev moi co the nam nhanh app, luong du lieu va vi tri can sua khi phat trien tinh nang.
+Tai lieu nay tom tat cau truc codebase cua du an `english-work-learning` de dev moi co the nam nhanh app, luong du lieu va vi tri can sua khi phat trien tinh nang.
 
 ## Tong quan
 
-`korean-work-learning` la ung dung hoc tieng Han cho nguoi di lam, xay bang Expo, React Native va TypeScript. App dung `expo-router` cho file-based routing, `AsyncStorage` de luu tien do hoc local, va du lieu bai hoc tu `assets/data/lessons.json`.
+`english-work-learning` la ung dung hoc tieng Anh cho nguoi di lam, xay bang Expo, React Native va TypeScript. App dung `expo-router` cho file-based routing, `AsyncStorage` de luu tien do hoc local, va du lieu bai hoc tu `assets/data/lessons.json`.
 
 Chuc nang chinh:
 
@@ -105,8 +105,8 @@ File types trung tam: `types/index.ts`.
 Nhom type quan trong:
 
 - `UserLevel`: `basic_review`, `work_communication`, `listening_speaking`.
-- `LessonCategory`: `daily_work`, `work_dialogue`, `business_korean`.
-- `DailyLesson`, `KoreanLesson`: cau truc lesson runtime.
+- `LessonCategory`: `daily_work`, `work_dialogue`, `business_english`.
+- `DailyLesson`, `EnglishLesson`: cau truc lesson runtime.
 - `DailyLessonWord`, `DailyLessonSentence`, `DailyLessonQuizQuestion`: noi dung lesson.
 - `LessonProgress`: lesson da hoc, ngay hien tai, ngay hoc cuoi.
 - `WordProgress`, `WordProgressMap`, `WordProgressStatus`: tien do flashcard.
@@ -172,8 +172,12 @@ Quan he du lieu:
 
 - `Lessons.id` la khoa chinh cua lesson.
 - Cac sheet `Words`, `Sentences`, `Grammar`, `Quiz` lien ket bang cot `lessonId`.
+- Sheet `Words` dung cot `english`, `pronunciation`, `meaningVi`, `example`.
+- Sheet `Sentences` dung cot `english`, `meaningVi`.
+- `Lessons.category` dung mot trong cac gia tri `daily_work`, `work_dialogue`, `business_english`.
 - `Grammar.explanationVi` duoc gan vao `grammarTip`.
 - `Quiz.correctAnswer` co the la text dap an hoac so thu tu option `1..4`.
+- Script van fallback doc cot cu `korean` neu Excel cu chua doi sang `english`, nhung file mau moi dung `english`.
 
 Sau khi build lesson, script goi `validateLessons(lessons, true)` va chi ghi cac lesson hop le vao JSON.
 

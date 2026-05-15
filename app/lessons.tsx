@@ -11,7 +11,7 @@ import { colors } from '@/constants/colors';
 import { radius, spacing } from '@/constants/spacing';
 import { getAllLessons } from '@/services/lessonService';
 import { appStorage, defaultLessonProgress } from '@/storage/appStorage';
-import type { KoreanLesson, LessonProgress, UserLevel } from '@/types';
+import type { EnglishLesson, LessonProgress, UserLevel } from '@/types';
 
 const levelLabels: Record<UserLevel, string> = {
   basic_review: 'Ôn nền tảng',
@@ -19,7 +19,7 @@ const levelLabels: Record<UserLevel, string> = {
   listening_speaking: 'Nghe nói tăng tốc',
 };
 
-function getLessonState(lessons: KoreanLesson[], index: number, completedLessonIds: string[]) {
+function getLessonState(lessons: EnglishLesson[], index: number, completedLessonIds: string[]) {
   const lesson = lessons[index];
   const previousLesson = lessons[index - 1];
   const isCompleted = completedLessonIds.includes(lesson.id);
@@ -56,7 +56,7 @@ function getLessonState(lessons: KoreanLesson[], index: number, completedLessonI
 
 export default function LessonsScreen() {
   const [lessonProgress, setLessonProgress] = useState<LessonProgress>(defaultLessonProgress);
-  const [lessons, setLessons] = useState<KoreanLesson[]>([]);
+  const [lessons, setLessons] = useState<EnglishLesson[]>([]);
 
   useFocusEffect(
     useCallback(() => {

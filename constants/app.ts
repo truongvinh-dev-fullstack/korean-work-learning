@@ -1,6 +1,6 @@
 import type { LearningRoute } from '@/types';
 
-export const APP_NAME = 'Korean Work Learning';
+export const APP_NAME = 'English Work Learning';
 
 export const DEFAULT_STREAK = 0;
 

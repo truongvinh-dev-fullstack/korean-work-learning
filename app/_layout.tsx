@@ -26,7 +26,7 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="home"
-          options={{ title: 'Học tiếng Hàn đi làm', headerTintColor: colors.primaryDark }}
+          options={{ title: 'Học tiếng Anh đi làm', headerTintColor: colors.primaryDark }}
         />
         <Stack.Screen
           name="daily-lesson"
@@ -43,6 +43,10 @@ export default function RootLayout() {
         <Stack.Screen
           name="work-dialogues"
           options={{ title: 'Hội thoại công việc', headerTintColor: colors.primaryDark }}
+        />
+        <Stack.Screen
+          name="writing-practice"
+          options={{ title: 'Luyện viết', headerTintColor: colors.primaryDark }}
         />
         <Stack.Screen
           name="progress"

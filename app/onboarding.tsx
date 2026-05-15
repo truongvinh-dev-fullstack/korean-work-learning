@@ -12,7 +12,7 @@ import { appStorage } from '@/storage/appStorage';
 const slides = [
   {
     eyebrow: '5 phút mỗi ngày',
-    title: 'Học lại tiếng Hàn trong 5 phút mỗi ngày',
+    title: 'Học lại tiếng Anh trong 5 phút mỗi ngày',
     description:
       'Mỗi bài học ngắn, dễ quay lại và đủ nhẹ để giữ nhịp học đều sau giờ làm.',
   },
@@ -64,8 +64,8 @@ export default function OnboardingScreen() {
           </View>
 
           <View style={styles.illustration}>
-            <AppText variant="koreanLarge" color={colors.primaryDark}>
-              한
+            <AppText variant="languageLarge" color={colors.primaryDark}>
+              EN
             </AppText>
           </View>
 

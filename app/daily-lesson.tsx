@@ -111,18 +111,18 @@ export default function DailyLessonScreen() {
           <View key={word.id} style={styles.wordItem}>
             <View style={styles.row}>
               <View style={styles.copy}>
-                <AppText variant="korean">{word.korean}</AppText>
+                <AppText variant="language">{word.english}</AppText>
                 <AppText variant="caption" color={colors.textMuted}>
                   {word.pronunciation}
                 </AppText>
               </View>
-              <SpeakButton text={word.korean} />
+              <SpeakButton text={word.english} />
             </View>
             <AppText color={colors.textMuted}>{word.meaningVi}</AppText>
             <View style={styles.exampleBox}>
               <View style={styles.row}>
                 <AppText style={styles.example}>{word.example}</AppText>
-                <SpeakButton text={word.example} accessibilityLabel="Nghe ví dụ tiếng Hàn" />
+                <SpeakButton text={word.example} accessibilityLabel="Nghe ví dụ tiếng Anh" />
               </View>
             </View>
           </View>
@@ -131,12 +131,12 @@ export default function DailyLessonScreen() {
 
       <LessonCard step={2} title="Câu giao tiếp">
         {lesson.sentences.map((sentence, index) => (
-          <View key={sentence.id ?? `${sentence.korean}-${index}`} style={styles.sentenceItem}>
+          <View key={sentence.id ?? `${sentence.english}-${index}`} style={styles.sentenceItem}>
             <View style={styles.row}>
               <AppText variant="subtitle" style={styles.flexText}>
-                {sentence.korean}
+                {sentence.english}
               </AppText>
-              <SpeakButton text={sentence.korean} accessibilityLabel="Nghe câu tiếng Hàn" />
+              <SpeakButton text={sentence.english} accessibilityLabel="Nghe câu tiếng Anh" />
             </View>
             <AppText color={colors.textMuted}>{sentence.meaningVi}</AppText>
           </View>

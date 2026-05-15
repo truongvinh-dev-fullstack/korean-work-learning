@@ -1,179 +1,801 @@
 [
   {
-    "id": "day-1-work-greeting",
+    "id": "EWD001",
     "dayNumber": 1,
     "category": "daily_work",
     "level": "basic_review",
-    "title": "Chao hoi va bat dau ngay lam",
-    "description": "Lam quen voi loi chao va cac tu co ban o noi lam viec.",
+    "title": "Chao hoi ngay dau di lam",
+    "description": "Luyen cach chao, gioi thieu ngan va bat dau cuoc tro chuyen o cong ty.",
     "estimatedMinutes": 5,
     "objectives": [
-      "Chao dong nghiep mot cach lich su",
-      "Hoi va xac nhan viec can lam dau ngay",
-      "Dung duoi cau lich su trong moi truong cong viec"
+      "Chao dong nghiep lich su",
+      "Gioi thieu ban than ngan gon",
+      "Dung cau mo dau tu nhien o noi lam viec"
     ],
     "words": [
       {
-        "id": "day-1-meeting",
-        "korean": "회의",
-        "pronunciation": "hoe-ui",
-        "meaningVi": "cuoc hop",
-        "example": "오늘 회의가 있어요."
+        "id": "W001",
+        "english": "good morning",
+        "pronunciation": "good MOR-ning",
+        "meaningVi": "chao buoi sang",
+        "example": "Good morning, everyone."
       },
       {
-        "id": "day-1-document",
-        "korean": "자료",
-        "pronunciation": "ja-ryo",
-        "meaningVi": "tai lieu",
-        "example": "자료를 보내 주세요."
+        "id": "W002",
+        "english": "welcome",
+        "pronunciation": "WEL-kuhm",
+        "meaningVi": "chao mung",
+        "example": "Welcome to the team."
       },
       {
-        "id": "day-1-confirm",
-        "korean": "확인하다",
-        "pronunciation": "hwak-in-ha-da",
-        "meaningVi": "kiem tra, xac nhan",
-        "example": "메일을 확인했어요."
+        "id": "W003",
+        "english": "coworker",
+        "pronunciation": "KOH-wur-ker",
+        "meaningVi": "dong nghiep",
+        "example": "I met my new coworker today."
+      },
+      {
+        "id": "W004",
+        "english": "team",
+        "pronunciation": "teem",
+        "meaningVi": "doi nhom",
+        "example": "I am happy to join the team."
+      },
+      {
+        "id": "W005",
+        "english": "manager",
+        "pronunciation": "MAN-uh-jer",
+        "meaningVi": "quan ly",
+        "example": "My manager introduced me to everyone."
+      },
+      {
+        "id": "W006",
+        "english": "office",
+        "pronunciation": "AW-fis",
+        "meaningVi": "van phong",
+        "example": "The office is on the third floor."
+      },
+      {
+        "id": "W007",
+        "english": "introduce",
+        "pronunciation": "in-truh-DOOS",
+        "meaningVi": "gioi thieu",
+        "example": "Let me introduce myself."
+      },
+      {
+        "id": "W008",
+        "english": "nice to meet you",
+        "pronunciation": "nice to MEET yoo",
+        "meaningVi": "rat vui duoc gap ban",
+        "example": "Nice to meet you, Anna."
+      },
+      {
+        "id": "W009",
+        "english": "first day",
+        "pronunciation": "furst day",
+        "meaningVi": "ngay dau tien",
+        "example": "This is my first day at work."
+      },
+      {
+        "id": "W010",
+        "english": "help",
+        "pronunciation": "help",
+        "meaningVi": "giup do",
+        "example": "Please let me know if you need help."
       }
     ],
     "sentences": [
       {
-        "id": "day-1-sentence-1",
-        "korean": "안녕하세요. 좋은 아침입니다.",
-        "meaningVi": "Xin chao. Chuc buoi sang tot lanh."
+        "id": "S001",
+        "english": "Good morning. I am happy to join the team today.",
+        "meaningVi": "Chao buoi sang. Hom nay toi rat vui duoc tham gia vao doi."
       },
       {
-        "id": "day-1-sentence-2",
-        "korean": "오늘 회의는 몇 시에 시작해요?",
-        "meaningVi": "Hom nay cuoc hop bat dau luc may gio?"
+        "id": "S002",
+        "english": "My name is Linh, and this is my first day.",
+        "meaningVi": "Toi ten la Linh, va hom nay la ngay dau tien cua toi."
       },
       {
-        "id": "day-1-sentence-3",
-        "korean": "확인하고 다시 말씀드리겠습니다.",
-        "meaningVi": "Toi se kiem tra va bao lai sau."
+        "id": "S003",
+        "english": "It is nice to meet you all.",
+        "meaningVi": "Rat vui duoc gap moi nguoi."
+      },
+      {
+        "id": "S004",
+        "english": "Please let me know if I can help.",
+        "meaningVi": "Hay cho toi biet neu toi co the giup."
+      },
+      {
+        "id": "S005",
+        "english": "I look forward to working with you.",
+        "meaningVi": "Toi mong duoc lam viec cung ban."
       }
     ],
     "grammar": {
-      "title": "Duoi cau -getseumnida",
-      "explanationVi": "Duoi cau -getseumnida dung trong moi truong cong viec de noi lich su ve viec minh se lam.",
+      "title": "I am... / My name is...",
+      "explanationVi": "Dung I am... hoac My name is... de tu gioi thieu ngan gon va lich su.",
       "examples": [
-        "확인하겠습니다.",
-        "보내 드리겠습니다."
+        "I am Linh.",
+        "My name is Linh."
       ]
     },
-    "grammarTip": "Duoi cau -getseumnida dung trong moi truong cong viec de noi lich su ve viec minh se lam.",
+    "grammarTip": "Dung I am... hoac My name is... de tu gioi thieu ngan gon va lich su.",
     "quiz": [
       {
-        "id": "day-1-quiz-1",
-        "question": "\"회의\" nghia la gi?",
+        "id": "Q001",
+        "question": "\"coworker\" nghia la gi?",
         "options": [
-          "Cuoc hop",
-          "Tai lieu",
-          "Lich trinh",
-          "Dong nghiep"
+          "Quan ly",
+          "Dong nghiep",
+          "Khach hang",
+          "Van phong"
         ],
-        "correctAnswer": "Cuoc hop",
-        "explanationVi": "\"회의\" la cuoc hop, thuong gap trong moi truong cong so."
+        "correctAnswer": "Dong nghiep",
+        "explanationVi": "\"coworker\" nghia la dong nghiep."
       },
       {
-        "id": "day-1-quiz-2",
-        "question": "Cau nao dung de noi \"Toi se kiem tra va bao lai sau\"?",
+        "id": "Q002",
+        "question": "Cau nao dung de noi \"Rat vui duoc gap ban\"?",
         "options": [
-          "확인하고 다시 말씀드리겠습니다.",
-          "지금 집에 갑니다.",
-          "커피를 마시겠습니다.",
-          "내일 쉬겠습니다."
+          "Nice to meet you.",
+          "See you tomorrow.",
+          "I need more time.",
+          "Please check this."
         ],
-        "correctAnswer": "확인하고 다시 말씀드리겠습니다.",
-        "explanationVi": "Cau nay dung de bao lai mot cach lich su."
+        "correctAnswer": "Nice to meet you.",
+        "explanationVi": "Nice to meet you dung khi gap ai do lan dau hoac trong loi chao lich su."
+      },
+      {
+        "id": "Q003",
+        "question": "\"This is my first day\" nghia la gi?",
+        "options": [
+          "Day la ngay nghi cua toi",
+          "Day la ngay dau tien cua toi",
+          "Toi da hoan thanh viec",
+          "Toi dang hop"
+        ],
+        "correctAnswer": "Day la ngay dau tien cua toi",
+        "explanationVi": "Cau nay dung de noi hom nay la ngay dau tien."
       }
     ]
   },
   {
-    "id": "day-2-ask-task",
+    "id": "EWD002",
     "dayNumber": 2,
     "category": "work_dialogue",
     "level": "basic_review",
-    "title": "Hoi viec can lam",
-    "description": "Luyen cach hoi uu tien cong viec va nhiem vu trong ngay.",
+    "title": "Gioi thieu ten va vai tro",
+    "description": "Tu gioi thieu ten, vi tri va bo phan khi gap dong nghiep moi.",
     "estimatedMinutes": 5,
     "objectives": [
-      "Hoi viec can lam truoc",
-      "Nhan nhiem vu mot cach tu nhien",
-      "Luyen cau tra loi ngan trong cong viec"
+      "Noi ten va vai tro cua minh",
+      "Hoi vai tro cua nguoi khac",
+      "Phan hoi lich su khi duoc gioi thieu"
     ],
     "words": [
       {
-        "id": "day-2-task",
-        "korean": "업무",
-        "pronunciation": "eop-mu",
-        "meaningVi": "cong viec, nghiep vu",
-        "example": "오늘 어떤 업무를 먼저 하면 될까요?"
+        "id": "W011",
+        "english": "name",
+        "pronunciation": "naym",
+        "meaningVi": "ten",
+        "example": "My name is Linh."
       },
       {
-        "id": "day-2-coworker",
-        "korean": "동료",
-        "pronunciation": "dong-ryo",
+        "id": "W012",
+        "english": "role",
+        "pronunciation": "rohl",
+        "meaningVi": "vai tro",
+        "example": "What is your role on the team?"
+      },
+      {
+        "id": "W013",
+        "english": "position",
+        "pronunciation": "puh-ZISH-uhn",
+        "meaningVi": "vi tri cong viec",
+        "example": "My position is project assistant."
+      },
+      {
+        "id": "W014",
+        "english": "department",
+        "pronunciation": "di-PART-muhnt",
+        "meaningVi": "phong ban",
+        "example": "I work in the sales department."
+      },
+      {
+        "id": "W015",
+        "english": "responsible for",
+        "pronunciation": "ri-SPON-suh-buhl for",
+        "meaningVi": "phu trach",
+        "example": "I am responsible for customer support."
+      },
+      {
+        "id": "W016",
+        "english": "report to",
+        "pronunciation": "ri-PORT too",
+        "meaningVi": "bao cao cho",
+        "example": "I report to the team manager."
+      },
+      {
+        "id": "W017",
+        "english": "colleague",
+        "pronunciation": "KOL-eeg",
         "meaningVi": "dong nghiep",
-        "example": "동료에게 물어보겠습니다."
+        "example": "She is my colleague from accounting."
       },
       {
-        "id": "day-2-request",
-        "korean": "요청",
-        "pronunciation": "yo-cheong",
-        "meaningVi": "yeu cau",
-        "example": "요청하신 일을 하겠습니다."
+        "id": "W018",
+        "english": "project",
+        "pronunciation": "PRAH-jekt",
+        "meaningVi": "du an",
+        "example": "I am working on a new project."
+      },
+      {
+        "id": "W019",
+        "english": "background",
+        "pronunciation": "BAK-ground",
+        "meaningVi": "nen tang, kinh nghiem",
+        "example": "I have a background in marketing."
+      },
+      {
+        "id": "W020",
+        "english": "experience",
+        "pronunciation": "ik-SPEER-ee-uhns",
+        "meaningVi": "kinh nghiem",
+        "example": "I have two years of experience."
       }
     ],
     "sentences": [
       {
-        "id": "day-2-sentence-1",
-        "korean": "오늘 제가 먼저 해야 할 일이 뭐예요?",
-        "meaningVi": "Hom nay viec toi can lam truoc la gi a?"
+        "id": "S006",
+        "english": "I work in the operations department.",
+        "meaningVi": "Toi lam viec o phong van hanh."
       },
       {
-        "id": "day-2-sentence-2",
-        "korean": "먼저 이 자료를 확인해 주세요.",
-        "meaningVi": "Truoc tien hay kiem tra tai lieu nay giup toi."
+        "id": "S007",
+        "english": "I am responsible for daily reports.",
+        "meaningVi": "Toi phu trach bao cao hang ngay."
       },
       {
-        "id": "day-2-sentence-3",
-        "korean": "네, 바로 확인하겠습니다.",
-        "meaningVi": "Vang, toi se kiem tra ngay."
+        "id": "S008",
+        "english": "What is your role on the team?",
+        "meaningVi": "Vai tro cua ban trong doi la gi?"
+      },
+      {
+        "id": "S009",
+        "english": "I report to the project manager.",
+        "meaningVi": "Toi bao cao cho quan ly du an."
+      },
+      {
+        "id": "S010",
+        "english": "I have experience in customer support.",
+        "meaningVi": "Toi co kinh nghiem ho tro khach hang."
       }
     ],
     "grammar": {
-      "title": "Mau cau -hamyeon doelkkayo?",
-      "explanationVi": "Mau -hamyeon doelkkayo? dung de hoi minh nen lam gi hoac lam nhu vay co duoc khong mot cach mem va lich su.",
+      "title": "I work in... / I am responsible for...",
+      "explanationVi": "Dung I work in... de noi phong ban va I am responsible for... de noi phan viec minh phu trach.",
       "examples": [
-        "무엇을 먼저 하면 될까요?",
-        "이 자료를 확인하면 될까요?"
+        "I work in sales.",
+        "I am responsible for reports."
       ]
     },
-    "grammarTip": "Mau -hamyeon doelkkayo? dung de hoi minh nen lam gi hoac lam nhu vay co duoc khong mot cach mem va lich su.",
+    "grammarTip": "Dung I work in... de noi phong ban va I am responsible for... de noi phan viec minh phu trach.",
     "quiz": [
       {
-        "id": "day-2-quiz-1",
-        "question": "\"업무\" nghia la gi?",
+        "id": "Q004",
+        "question": "\"department\" nghia la gi?",
         "options": [
-          "Cong viec",
-          "Ngay nghi",
-          "Bua trua",
-          "Cua hang"
+          "Phong ban",
+          "Du an",
+          "Lich hop",
+          "Bao cao"
         ],
-        "correctAnswer": "Cong viec",
-        "explanationVi": "\"업무\" thuong chi cong viec hoac nhiem vu."
+        "correctAnswer": "Phong ban",
+        "explanationVi": "department la phong ban trong cong ty."
       },
       {
-        "id": "day-2-quiz-2",
-        "question": "Cau nao phu hop khi hoi viec can lam truoc?",
+        "id": "Q005",
+        "question": "Cau nao noi ve trach nhiem cong viec?",
         "options": [
-          "오늘 제가 먼저 해야 할 일이 뭐예요?",
-          "안녕하세요. 좋은 아침입니다.",
-          "커피가 맛있어요.",
-          "내일은 토요일입니다."
+          "I am responsible for daily reports.",
+          "Good morning, everyone.",
+          "It is nice to meet you.",
+          "Tomorrow is Friday."
         ],
-        "correctAnswer": "오늘 제가 먼저 해야 할 일이 뭐예요?",
-        "explanationVi": "Cau nay hoi truc tiep viec can lam truoc trong ngay."
+        "correctAnswer": "I am responsible for daily reports.",
+        "explanationVi": "I am responsible for... dung de noi minh phu trach viec gi."
+      },
+      {
+        "id": "Q006",
+        "question": "\"What is your role on the team?\" dung de hoi gi?",
+        "options": [
+          "Ten cua ban",
+          "Vai tro cua ban",
+          "Gio lam viec",
+          "Dia chi cong ty"
+        ],
+        "correctAnswer": "Vai tro cua ban",
+        "explanationVi": "Cau nay hoi vai tro hoac vi tri cua nguoi khac trong doi."
+      }
+    ]
+  },
+  {
+    "id": "EWD003",
+    "dayNumber": 3,
+    "category": "daily_work",
+    "level": "work_communication",
+    "title": "Hoi viec can lam",
+    "description": "Hoi uu tien cong viec, nhan nhiem vu va xac nhan lai yeu cau.",
+    "estimatedMinutes": 5,
+    "objectives": [
+      "Hoi viec nen lam truoc",
+      "Xac nhan nhiem vu duoc giao",
+      "Noi se xu ly viec ngay"
+    ],
+    "words": [
+      {
+        "id": "W021",
+        "english": "task",
+        "pronunciation": "task",
+        "meaningVi": "nhiem vu",
+        "example": "Which task should I do first?"
+      },
+      {
+        "id": "W022",
+        "english": "priority",
+        "pronunciation": "pry-OR-uh-tee",
+        "meaningVi": "uu tien",
+        "example": "What is the top priority today?"
+      },
+      {
+        "id": "W023",
+        "english": "deadline",
+        "pronunciation": "DED-line",
+        "meaningVi": "han chot",
+        "example": "The deadline is Friday."
+      },
+      {
+        "id": "W024",
+        "english": "request",
+        "pronunciation": "ri-KWEST",
+        "meaningVi": "yeu cau",
+        "example": "I will handle your request."
+      },
+      {
+        "id": "W025",
+        "english": "confirm",
+        "pronunciation": "kuhn-FURM",
+        "meaningVi": "xac nhan",
+        "example": "Can you confirm the details?"
+      },
+      {
+        "id": "W026",
+        "english": "check",
+        "pronunciation": "chek",
+        "meaningVi": "kiem tra",
+        "example": "I will check the document."
+      },
+      {
+        "id": "W027",
+        "english": "send",
+        "pronunciation": "send",
+        "meaningVi": "gui",
+        "example": "Please send me the file."
+      },
+      {
+        "id": "W028",
+        "english": "update",
+        "pronunciation": "up-DAYT",
+        "meaningVi": "cap nhat",
+        "example": "Could you give me an update?"
+      },
+      {
+        "id": "W029",
+        "english": "right away",
+        "pronunciation": "ryt uh-WAY",
+        "meaningVi": "ngay lap tuc",
+        "example": "I will do it right away."
+      },
+      {
+        "id": "W030",
+        "english": "follow up",
+        "pronunciation": "FOL-oh up",
+        "meaningVi": "theo doi, phan hoi tiep",
+        "example": "I will follow up after lunch."
+      }
+    ],
+    "sentences": [
+      {
+        "id": "S011",
+        "english": "What should I do first today?",
+        "meaningVi": "Hom nay toi nen lam viec gi truoc?"
+      },
+      {
+        "id": "S012",
+        "english": "Could you confirm the deadline?",
+        "meaningVi": "Ban co the xac nhan han chot khong?"
+      },
+      {
+        "id": "S013",
+        "english": "I will check the document right away.",
+        "meaningVi": "Toi se kiem tra tai lieu ngay."
+      },
+      {
+        "id": "S014",
+        "english": "Please send me the latest file.",
+        "meaningVi": "Vui long gui cho toi file moi nhat."
+      },
+      {
+        "id": "S015",
+        "english": "I will follow up after the meeting.",
+        "meaningVi": "Toi se phan hoi tiep sau cuoc hop."
+      }
+    ],
+    "grammar": {
+      "title": "What should I...?",
+      "explanationVi": "Dung What should I + dong tu nguyen mau de hoi minh nen lam gi.",
+      "examples": [
+        "What should I do first?",
+        "What should I check next?"
+      ]
+    },
+    "grammarTip": "Dung What should I + dong tu nguyen mau de hoi minh nen lam gi.",
+    "quiz": [
+      {
+        "id": "Q007",
+        "question": "\"priority\" nghia la gi?",
+        "options": [
+          "Uu tien",
+          "Tai lieu",
+          "Van de",
+          "Y kien"
+        ],
+        "correctAnswer": "Uu tien",
+        "explanationVi": "priority la muc do uu tien."
+      },
+      {
+        "id": "Q008",
+        "question": "Cau nao hoi viec nen lam truoc?",
+        "options": [
+          "What should I do first today?",
+          "I work in operations.",
+          "The report is almost done.",
+          "Nice to meet you."
+        ],
+        "correctAnswer": "What should I do first today?",
+        "explanationVi": "What should I do first today? dung de hoi viec can uu tien."
+      },
+      {
+        "id": "Q009",
+        "question": "\"right away\" nghia la gi?",
+        "options": [
+          "Ngay mai",
+          "Ngay lap tuc",
+          "Sau cuoc hop",
+          "Tuan sau"
+        ],
+        "correctAnswer": "Ngay lap tuc",
+        "explanationVi": "right away nghia la ngay lap tuc."
+      }
+    ]
+  },
+  {
+    "id": "EWD004",
+    "dayNumber": 4,
+    "category": "business_english",
+    "level": "work_communication",
+    "title": "Trao doi trong cuoc hop",
+    "description": "Dung cau ngan de hoi y kien, xac nhan thong tin va de xuat trong cuoc hop.",
+    "estimatedMinutes": 5,
+    "objectives": [
+      "Hoi lai khi chua ro",
+      "Dua y kien ngan gon",
+      "Xac nhan buoc tiep theo"
+    ],
+    "words": [
+      {
+        "id": "W031",
+        "english": "meeting",
+        "pronunciation": "MEE-ting",
+        "meaningVi": "cuoc hop",
+        "example": "We have a meeting at 10 a.m."
+      },
+      {
+        "id": "W032",
+        "english": "agenda",
+        "pronunciation": "uh-JEN-duh",
+        "meaningVi": "chuong trinh hop",
+        "example": "The agenda has three items."
+      },
+      {
+        "id": "W033",
+        "english": "opinion",
+        "pronunciation": "uh-PIN-yuhn",
+        "meaningVi": "y kien",
+        "example": "What is your opinion?"
+      },
+      {
+        "id": "W034",
+        "english": "suggest",
+        "pronunciation": "suh-JEST",
+        "meaningVi": "de xuat",
+        "example": "I suggest we start with the report."
+      },
+      {
+        "id": "W035",
+        "english": "agree",
+        "pronunciation": "uh-GREE",
+        "meaningVi": "dong y",
+        "example": "I agree with your idea."
+      },
+      {
+        "id": "W036",
+        "english": "clarify",
+        "pronunciation": "KLAIR-uh-fy",
+        "meaningVi": "lam ro",
+        "example": "Could you clarify this point?"
+      },
+      {
+        "id": "W037",
+        "english": "decision",
+        "pronunciation": "di-SIZH-uhn",
+        "meaningVi": "quyet dinh",
+        "example": "We need to make a decision today."
+      },
+      {
+        "id": "W038",
+        "english": "next step",
+        "pronunciation": "nekst step",
+        "meaningVi": "buoc tiep theo",
+        "example": "What is the next step?"
+      },
+      {
+        "id": "W039",
+        "english": "minutes",
+        "pronunciation": "MIN-its",
+        "meaningVi": "bien ban hop",
+        "example": "I will write the meeting minutes."
+      },
+      {
+        "id": "W040",
+        "english": "action item",
+        "pronunciation": "AK-shuhn EYE-tuhm",
+        "meaningVi": "viec can lam sau hop",
+        "example": "Please add this action item."
+      }
+    ],
+    "sentences": [
+      {
+        "id": "S016",
+        "english": "Could you clarify this point for me?",
+        "meaningVi": "Ban co the lam ro diem nay giup toi khong?"
+      },
+      {
+        "id": "S017",
+        "english": "I suggest we review the agenda first.",
+        "meaningVi": "Toi de xuat chung ta xem chuong trinh hop truoc."
+      },
+      {
+        "id": "S018",
+        "english": "I agree with the next step.",
+        "meaningVi": "Toi dong y voi buoc tiep theo."
+      },
+      {
+        "id": "S019",
+        "english": "Who will write the meeting minutes?",
+        "meaningVi": "Ai se viet bien ban hop?"
+      },
+      {
+        "id": "S020",
+        "english": "Let us confirm the action items.",
+        "meaningVi": "Chung ta hay xac nhan cac viec can lam sau hop."
+      }
+    ],
+    "grammar": {
+      "title": "Could you...?",
+      "explanationVi": "Dung Could you...? de hoi hoac nho ai do mot cach lich su trong cuoc hop.",
+      "examples": [
+        "Could you clarify this point?",
+        "Could you share your opinion?"
+      ]
+    },
+    "grammarTip": "Dung Could you...? de hoi hoac nho ai do mot cach lich su trong cuoc hop.",
+    "quiz": [
+      {
+        "id": "Q010",
+        "question": "\"agenda\" nghia la gi?",
+        "options": [
+          "Chuong trinh hop",
+          "Dong nghiep",
+          "Han chot",
+          "Ngay dau tien"
+        ],
+        "correctAnswer": "Chuong trinh hop",
+        "explanationVi": "agenda la danh sach noi dung can ban trong cuoc hop."
+      },
+      {
+        "id": "Q011",
+        "question": "Cau nao dung de nho lam ro?",
+        "options": [
+          "Could you clarify this point?",
+          "I have completed it.",
+          "Welcome to the team.",
+          "I need more time."
+        ],
+        "correctAnswer": "Could you clarify this point?",
+        "explanationVi": "Could you clarify this point? la cach hoi lich su khi chua ro."
+      },
+      {
+        "id": "Q012",
+        "question": "\"action item\" la gi?",
+        "options": [
+          "Viec can lam sau hop",
+          "Nguoi quan ly",
+          "Phong ban",
+          "Loi chao"
+        ],
+        "correctAnswer": "Viec can lam sau hop",
+        "explanationVi": "action item la viec cu the can xu ly sau cuoc hop."
+      }
+    ]
+  },
+  {
+    "id": "EWD005",
+    "dayNumber": 5,
+    "category": "work_dialogue",
+    "level": "listening_speaking",
+    "title": "Bao cao tien do va xin ho tro",
+    "description": "Bao cao viec da lam, neu kho khan va xin ho tro mot cach chuyen nghiep.",
+    "estimatedMinutes": 5,
+    "objectives": [
+      "Bao cao tien do ngan gon",
+      "Neu van de dang gap",
+      "Xin ho tro hoac them thoi gian"
+    ],
+    "words": [
+      {
+        "id": "W041",
+        "english": "progress",
+        "pronunciation": "PRAH-gress",
+        "meaningVi": "tien do",
+        "example": "Here is my progress for today."
+      },
+      {
+        "id": "W042",
+        "english": "completed",
+        "pronunciation": "kuhm-PLEE-tid",
+        "meaningVi": "da hoan thanh",
+        "example": "I have completed the first task."
+      },
+      {
+        "id": "W043",
+        "english": "issue",
+        "pronunciation": "ISH-oo",
+        "meaningVi": "van de",
+        "example": "I found an issue in the file."
+      },
+      {
+        "id": "W044",
+        "english": "support",
+        "pronunciation": "suh-PORT",
+        "meaningVi": "ho tro",
+        "example": "I need support with this report."
+      },
+      {
+        "id": "W045",
+        "english": "delay",
+        "pronunciation": "di-LAY",
+        "meaningVi": "su cham tre",
+        "example": "There may be a delay."
+      },
+      {
+        "id": "W046",
+        "english": "almost done",
+        "pronunciation": "AWL-mohst dun",
+        "meaningVi": "gan xong",
+        "example": "The task is almost done."
+      },
+      {
+        "id": "W047",
+        "english": "review",
+        "pronunciation": "ri-VYOO",
+        "meaningVi": "xem lai",
+        "example": "Could you review this for me?"
+      },
+      {
+        "id": "W048",
+        "english": "feedback",
+        "pronunciation": "FEED-bak",
+        "meaningVi": "phan hoi",
+        "example": "Thank you for your feedback."
+      },
+      {
+        "id": "W049",
+        "english": "need more time",
+        "pronunciation": "need mor tym",
+        "meaningVi": "can them thoi gian",
+        "example": "I need more time to finish it."
+      },
+      {
+        "id": "W050",
+        "english": "blocker",
+        "pronunciation": "BLAH-ker",
+        "meaningVi": "diem dang can tro",
+        "example": "This blocker is slowing me down."
+      }
+    ],
+    "sentences": [
+      {
+        "id": "S021",
+        "english": "I have completed the first task.",
+        "meaningVi": "Toi da hoan thanh nhiem vu dau tien."
+      },
+      {
+        "id": "S022",
+        "english": "I found an issue and need support.",
+        "meaningVi": "Toi tim thay mot van de va can ho tro."
+      },
+      {
+        "id": "S023",
+        "english": "The report is almost done.",
+        "meaningVi": "Bao cao gan xong roi."
+      },
+      {
+        "id": "S024",
+        "english": "Could you review this when you have time?",
+        "meaningVi": "Ban co the xem lai phan nay khi co thoi gian khong?"
+      },
+      {
+        "id": "S025",
+        "english": "I may need more time to finish it.",
+        "meaningVi": "Toi co the can them thoi gian de hoan thanh viec nay."
+      }
+    ],
+    "grammar": {
+      "title": "I have completed... / I need...",
+      "explanationVi": "Dung I have completed... de bao viec da xong va I need... de neu dieu minh can.",
+      "examples": [
+        "I have completed the task.",
+        "I need support with this issue."
+      ]
+    },
+    "grammarTip": "Dung I have completed... de bao viec da xong va I need... de neu dieu minh can.",
+    "quiz": [
+      {
+        "id": "Q013",
+        "question": "\"completed\" nghia la gi?",
+        "options": [
+          "Da hoan thanh",
+          "Bi cham",
+          "Can ho tro",
+          "Chua ro"
+        ],
+        "correctAnswer": "Da hoan thanh",
+        "explanationVi": "completed nghia la da hoan thanh."
+      },
+      {
+        "id": "Q014",
+        "question": "Cau nao dung de xin ho tro?",
+        "options": [
+          "I need support with this report.",
+          "I work in sales.",
+          "Good morning.",
+          "What is your role?"
+        ],
+        "correctAnswer": "I need support with this report.",
+        "explanationVi": "I need support with... dung de noi minh can ho tro o viec nao."
+      },
+      {
+        "id": "Q015",
+        "question": "\"I may need more time\" nghia la gi?",
+        "options": [
+          "Toi co the can them thoi gian",
+          "Toi da xong het",
+          "Toi dong y voi y kien do",
+          "Toi se viet bien ban"
+        ],
+        "correctAnswer": "Toi co the can them thoi gian",
+        "explanationVi": "Cau nay dung khi bao co the can them thoi gian de hoan thanh."
       }
     ]
   }

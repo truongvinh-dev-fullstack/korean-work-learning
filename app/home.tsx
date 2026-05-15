@@ -45,8 +45,13 @@ const homeActions = [
     href: '/work-dialogues' as const,
   },
   {
+    title: 'Luyện viết',
+    description: 'Viết lại câu tiếng Anh từ gợi ý tiếng Việt và kiểm tra ngay.',
+    href: '/writing-practice' as const,
+  },
+  {
     title: 'Tiến độ học',
-    description: 'Xem streak, số từ đã học và số câu đã luyện.',
+    description: 'Xem streak, số từ đã học, số câu đã luyện và câu đã viết.',
     href: '/progress' as const,
   },
 ];
@@ -85,7 +90,7 @@ export default function HomeScreen() {
 
   return (
     <AppScreen
-      title="Hôm nay học 5 phút tiếng Hàn"
+      title="Hôm nay học 5 phút tiếng Anh"
       subtitle="Chọn một phần nhỏ để học đều, nhẹ nhàng và sát với công việc.">
       <View style={styles.settingsRow}>
         <Pressable
@@ -104,6 +109,7 @@ export default function HomeScreen() {
         <ProgressBox label="Streak ngày học" value={`${progress.streak} ngày`} />
         <ProgressBox label="Số từ đã học" value={progress.learnedWordsCount} />
         <ProgressBox label="Số câu đã luyện" value={progress.practicedSentencesCount} />
+        <ProgressBox label="Số câu đã viết" value={progress.writingPracticeCount} />
         <ProgressBox label="Level hiện tại" value={currentLevel} />
       </View>
 

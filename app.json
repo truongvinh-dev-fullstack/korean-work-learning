@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "korean-work-learning",
-    "slug": "korean-work-learning",
+    "name": "english-work-learning",
+    "slug": "english-work-learning",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "koreanworklearning",
+    "scheme": "englishworklearning",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -47,14 +47,15 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "5840454f-b36f-416f-9eb9-c44503b4ff35"
+        "projectId": "4faeb6d3-de11-4e24-9271-910b06e9805e"
       }
     },
+    "owner": "truongvinh",
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/5840454f-b36f-416f-9eb9-c44503b4ff35"
+      "url": "https://u.expo.dev/4faeb6d3-de11-4e24-9271-910b06e9805e"
     }
   }
 }

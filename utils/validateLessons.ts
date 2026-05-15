@@ -2,7 +2,7 @@ import type {
   DailyLessonQuizQuestion,
   DailyLessonSentence,
   DailyLessonWord,
-  KoreanLesson,
+  EnglishLesson,
   LessonCategory,
   LessonGrammar,
   UserLevel,
@@ -15,14 +15,14 @@ export type LessonValidationIssue = {
 };
 
 export type LessonValidationResult = {
-  validLessons: KoreanLesson[];
+  validLessons: EnglishLesson[];
   issues: LessonValidationIssue[];
 };
 
 export const validLessonCategories: readonly LessonCategory[] = [
   'daily_work',
   'work_dialogue',
-  'business_korean',
+  'business_english',
 ];
 
 export const validLessonLevels: readonly UserLevel[] = [
@@ -121,7 +121,7 @@ function validateWords(
       return;
     }
 
-    const requiredFields = ['id', 'korean', 'pronunciation', 'meaningVi', 'example'] as const;
+    const requiredFields = ['id', 'english', 'pronunciation', 'meaningVi', 'example'] as const;
     const missingField = requiredFields.find((field) => !isNonEmptyString(item[field]));
 
     if (missingField) {
@@ -130,7 +130,7 @@ function validateWords(
     }
 
     const id = item.id as string;
-    const korean = item.korean as string;
+    const english = item.english as string;
     const pronunciation = item.pronunciation as string;
     const meaningVi = item.meaningVi as string;
     const example = item.example as string;
@@ -142,7 +142,7 @@ function validateWords(
 
     words.push({
       id,
-      korean,
+      english,
       pronunciation,
       meaningVi,
       example,
@@ -172,8 +172,8 @@ function validateSentences(
       return;
     }
 
-    if (!isNonEmptyString(item.korean)) {
-      issues.push(createIssue(lessonId, `${fieldPrefix}.korean`, 'is required'));
+    if (!isNonEmptyString(item.english)) {
+      issues.push(createIssue(lessonId, `${fieldPrefix}.english`, 'is required'));
       return;
     }
 
@@ -184,7 +184,7 @@ function validateSentences(
 
     sentences.push({
       id: isNonEmptyString(item.id) ? item.id : undefined,
-      korean: item.korean,
+      english: item.english,
       meaningVi: item.meaningVi,
     });
   });
@@ -327,7 +327,7 @@ export function validateLessons(rawLessons: unknown, logWarnings = true): Lesson
     .map((word) => word.id)
     .filter(isNonEmptyString);
   const wordIdCounts = countValues(wordIds);
-  const validLessons: KoreanLesson[] = [];
+  const validLessons: EnglishLesson[] = [];
 
   rawLessons.forEach((item, index) => {
     const fallbackLessonId = `index-${index}`;
@@ -395,8 +395,8 @@ export function validateLessons(rawLessons: unknown, logWarnings = true): Lesson
 
     const id = item.id as string;
     const dayNumber = item.dayNumber as number;
-    const category = item.category as KoreanLesson['category'];
-    const level = item.level as KoreanLesson['level'];
+    const category = item.category as EnglishLesson['category'];
+    const level = item.level as EnglishLesson['level'];
     const title = item.title as string;
     const description = item.description as string;
     const estimatedMinutes = item.estimatedMinutes as number;

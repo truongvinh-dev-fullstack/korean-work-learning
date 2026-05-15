@@ -11,7 +11,7 @@ type SpeakButtonProps = {
   accessibilityLabel?: string;
 };
 
-export function SpeakButton({ text, accessibilityLabel = 'Nghe phat am tieng Han' }: SpeakButtonProps) {
+export function SpeakButton({ text, accessibilityLabel = 'Nghe phát âm tiếng Anh' }: SpeakButtonProps) {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const isMountedRef = useRef(true);
 
@@ -38,8 +38,8 @@ export function SpeakButton({ text, accessibilityLabel = 'Nghe phat am tieng Han
     Speech.stop();
     updateSpeaking(true);
     Speech.speak(text, {
-      language: 'ko-KR',
-      rate: 0.88,
+      language: 'en-US',
+      rate: 0.9,
       onDone: () => updateSpeaking(false),
       onStopped: () => updateSpeaking(false),
       onError: () => updateSpeaking(false),

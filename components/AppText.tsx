@@ -12,8 +12,8 @@ type AppTextVariant =
   | 'caption'
   | 'label'
   | 'button'
-  | 'korean'
-  | 'koreanLarge';
+  | 'language'
+  | 'languageLarge';
 
 type AppTextProps = TextProps & {
   variant?: AppTextVariant;
@@ -70,15 +70,15 @@ const styles = StyleSheet.create({
     lineHeight: typography.lineHeight.md,
     textAlign: 'center',
   },
-  korean: {
+  language: {
     fontSize: typography.size.xxl,
     fontWeight: typography.weight.extrabold,
     lineHeight: typography.lineHeight.xxl,
   },
-  koreanLarge: {
-    fontSize: typography.size.koreanDisplay,
+  languageLarge: {
+    fontSize: typography.size.languageDisplay,
     fontWeight: typography.weight.extrabold,
-    lineHeight: typography.lineHeight.koreanDisplay,
+    lineHeight: typography.lineHeight.languageDisplay,
     textAlign: 'center',
   },
 });

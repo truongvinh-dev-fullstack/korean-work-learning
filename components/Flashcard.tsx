@@ -50,12 +50,12 @@ export function Flashcard({ word, currentStatus, onSelectStatus }: FlashcardProp
             <View style={styles.backContent}>
               <View style={styles.cardHeader}>
                 <View style={styles.copy}>
-                  <AppText variant="korean">{word.korean}</AppText>
+                  <AppText variant="language">{word.english}</AppText>
                   <AppText variant="caption" color={colors.textMuted}>
                     {word.pronunciation}
                   </AppText>
                 </View>
-                <SpeakButton text={word.korean} />
+                <SpeakButton text={word.english} />
               </View>
 
               <View style={styles.divider} />
@@ -73,7 +73,7 @@ export function Flashcard({ word, currentStatus, onSelectStatus }: FlashcardProp
                 </AppText>
                 <View style={styles.exampleRow}>
                   <AppText style={styles.example}>{word.example}</AppText>
-                  <SpeakButton text={word.example} accessibilityLabel="Nghe ví dụ tiếng Hàn" />
+                  <SpeakButton text={word.example} accessibilityLabel="Nghe ví dụ tiếng Anh" />
                 </View>
               </View>
             </View>
@@ -82,8 +82,8 @@ export function Flashcard({ word, currentStatus, onSelectStatus }: FlashcardProp
               <AppText variant="caption" color={colors.textMuted}>
                 Bấm để lật thẻ
               </AppText>
-              <AppText variant="koreanLarge">{word.korean}</AppText>
-              <SpeakButton text={word.korean} />
+              <AppText variant="languageLarge">{word.english}</AppText>
+              <SpeakButton text={word.english} />
             </View>
           )}
         </AppCard>

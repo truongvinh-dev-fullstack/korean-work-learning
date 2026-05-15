@@ -77,9 +77,9 @@ export default function WorkDialoguesScreen() {
             <View style={styles.sentenceBox}>
               <View style={styles.row}>
                 <AppText variant="subtitle" style={styles.flexText}>
-                  {dialogue.koreanSentence}
+                  {dialogue.englishSentence}
                 </AppText>
-                <SpeakButton text={dialogue.koreanSentence} accessibilityLabel="Nghe câu tiếng Hàn" />
+                <SpeakButton text={dialogue.englishSentence} accessibilityLabel="Nghe câu tiếng Anh" />
               </View>
               <AppText color={colors.textMuted}>{dialogue.meaningVi}</AppText>
             </View>

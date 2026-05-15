@@ -1,6 +1,6 @@
+import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { router } from 'expo-router';
 
 import { AppButton } from '@/components/AppButton';
 import { AppCard } from '@/components/AppCard';
@@ -14,13 +14,6 @@ import type { WordProgress, WordProgressMap, WordProgressStatus } from '@/types'
 
 type ReviewableWordStatus = Exclude<WordProgressStatus, 'new'>;
 
-const statusPriority: Record<WordProgressStatus, number> = {
-  forgotten: 0,
-  unsure: 1,
-  new: 2,
-  remembered: 3,
-};
-
 const statusLabels: Record<WordProgressStatus, string> = {
   new: 'Chưa ôn',
   remembered: 'Nhớ',
@@ -28,23 +21,17 @@ const statusLabels: Record<WordProgressStatus, string> = {
   forgotten: 'Quên',
 };
 
-function getWordPriority(word: WordProgress) {
-  return statusPriority[word.status];
-}
+function shuffleWordsForReview(words: WordProgress[]) {
+  const shuffledWords = [...words];
 
-function sortWordsForReview(words: WordProgress[]) {
-  return [...words].sort((firstWord, secondWord) => {
-    const priorityDiff = getWordPriority(firstWord) - getWordPriority(secondWord);
+  for (let index = shuffledWords.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    const currentWord = shuffledWords[index];
+    shuffledWords[index] = shuffledWords[randomIndex];
+    shuffledWords[randomIndex] = currentWord;
+  }
 
-    if (priorityDiff !== 0) {
-      return priorityDiff;
-    }
-
-    const firstUpdatedAt = firstWord.lastReviewedAt ?? '';
-    const secondUpdatedAt = secondWord.lastReviewedAt ?? '';
-
-    return firstUpdatedAt.localeCompare(secondUpdatedAt);
-  });
+  return shuffledWords;
 }
 
 export default function FlashcardsScreen() {
@@ -65,7 +52,7 @@ export default function FlashcardsScreen() {
       }
 
       setWordProgressMap(storedWordProgress);
-      setReviewQueue(sortWordsForReview(Object.values(storedWordProgress)));
+      setReviewQueue(shuffleWordsForReview(Object.values(storedWordProgress)));
       setCurrentIndex(0);
       setIsLoading(false);
     }
@@ -124,9 +111,7 @@ export default function FlashcardsScreen() {
 
   if (hasNoWords) {
     return (
-      <AppScreen
-        title="Flashcards"
-        subtitle="Chưa có từ nào trong danh sách ôn tập.">
+      <AppScreen title="Flashcards" subtitle="Chưa có từ nào trong danh sách ôn tập.">
         <AppCard style={styles.doneCard}>
           <AppText variant="subtitle" style={styles.centerText}>
             Chưa có từ nào
@@ -144,20 +129,20 @@ export default function FlashcardsScreen() {
     return (
       <AppScreen
         title="Flashcards"
-        subtitle="Các từ mơ hồ hoặc quên sẽ được ưu tiên ở lần ôn tiếp theo.">
+        subtitle="Mỗi lượt ôn sẽ trộn ngẫu nhiên danh sách từ để bạn không học theo thứ tự cố định.">
         <AppCard style={styles.doneCard}>
           <AppText variant="subtitle" style={styles.centerText}>
             Hôm nay ôn xong rồi
           </AppText>
           <AppText color={colors.textMuted} style={styles.centerText}>
-            Trạng thái từng từ đã được lưu local để lần sau sắp xếp lại thứ tự ôn.
+            Trạng thái từng từ đã được lưu local. Khi ôn lại, danh sách sẽ được trộn mới.
           </AppText>
           <AppButton
-            title="Ôn lại từ đầu"
+            title="Ôn lại với thứ tự mới"
             onPress={() => {
               appStorage.getWordProgress().then((storedWordProgress) => {
                 setWordProgressMap(storedWordProgress);
-                setReviewQueue(sortWordsForReview(Object.values(storedWordProgress)));
+                setReviewQueue(shuffleWordsForReview(Object.values(storedWordProgress)));
                 setCurrentIndex(0);
               });
             }}

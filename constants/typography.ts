@@ -7,7 +7,7 @@ export const typography = {
     xl: 20,
     xxl: 24,
     display: 30,
-    koreanDisplay: 42,
+    languageDisplay: 42,
   },
   lineHeight: {
     xs: 17,
@@ -17,7 +17,7 @@ export const typography = {
     xl: 29,
     xxl: 34,
     display: 38,
-    koreanDisplay: 52,
+    languageDisplay: 52,
   },
   weight: {
     regular: '400',
