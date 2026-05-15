@@ -104,7 +104,7 @@ export default function DailyLessonScreen() {
 
   return (
     <AppScreen
-      title={`Ngày ${lesson.dayNumber}: ${lesson.title}`}
+      title={`Lesson ${lesson.dayNumber}: ${lesson.title}`}
       subtitle={`${lesson.description} · ${lesson.estimatedMinutes} phút`}>
       <LessonCard step={1} title="Từ vựng">
         {lesson.words.map((word) => (

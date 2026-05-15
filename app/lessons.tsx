@@ -117,7 +117,7 @@ export default function LessonsScreen() {
                   <View style={styles.topRow}>
                     <View style={styles.dayBadge}>
                       <AppText variant="label" color={colors.primary}>
-                        Ngày {lesson.dayNumber}
+                        Lesson {lesson.dayNumber}
                       </AppText>
                     </View>
 

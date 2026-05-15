@@ -125,7 +125,7 @@ export default function HomeScreen() {
               Bài học tiếp theo
             </AppText>
             <AppText variant="subtitle">
-              Ngày {nextLesson.dayNumber}: {nextLesson.title}
+              Lesson {nextLesson.dayNumber}: {nextLesson.title}
             </AppText>
             <AppText color={colors.textMuted}>{nextLesson.description}</AppText>
             <AppText variant="caption" color={colors.textSubtle}>

@@ -168,7 +168,7 @@ export default function SpeakingPracticeScreen() {
     return (
       <AppScreen
         title="Luyện nói"
-        subtitle={`Ngày ${lesson.dayNumber}: ${lesson.title}`}>
+        subtitle={`Lesson ${lesson.dayNumber}: ${lesson.title}`}>
         <AppCard style={styles.doneCard}>
           <AppText variant="subtitle" style={styles.centerText}>
             Bạn đã hoàn thành luyện nói hôm nay
@@ -188,7 +188,7 @@ export default function SpeakingPracticeScreen() {
   return (
     <AppScreen
       title="Luyện nói"
-      subtitle={`Nghe mẫu, shadowing, ghi âm và tự đánh giá. Ngày ${lesson.dayNumber}: ${lesson.title}`}>
+      subtitle={`Nghe mẫu, shadowing, ghi âm và tự đánh giá. Lesson ${lesson.dayNumber}: ${lesson.title}`}>
       <View style={styles.progressRow}>
         <AppText variant="caption" color={colors.textMuted}>
           Đã luyện {completedCount}/{sentences.length} câu

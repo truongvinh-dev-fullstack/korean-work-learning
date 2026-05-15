@@ -191,7 +191,7 @@ export default function WritingPracticeScreen() {
           Đã viết đúng {completedCount}/{prompts.length} câu
         </AppText>
         <AppText variant="caption" color={colors.textMuted}>
-          Ngày {currentPrompt.dayNumber}
+          Lesson {currentPrompt.dayNumber}
         </AppText>
       </View>
 

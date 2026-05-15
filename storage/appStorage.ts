@@ -44,6 +44,7 @@ export const defaultLessonProgress: LessonProgress = {
 };
 
 const userLevels: UserLevel[] = ['basic_review', 'work_communication', 'listening_speaking'];
+const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 function parseUserLevel(value: string | null): UserLevel | null {
   if (value === null) {
@@ -156,6 +157,78 @@ function parseStringArray(value: string | null): string[] {
   }
 }
 
+function toLocalDateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
+function normalizeStudyDateKey(value: string | null) {
+  if (!value) {
+    return null;
+  }
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return value;
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+
+  return toLocalDateKey(date);
+}
+
+function getDateKeyTime(dateKey: string) {
+  const [year, month, day] = dateKey.split('-').map(Number);
+
+  return Date.UTC(year, month - 1, day);
+}
+
+function getDateKeyDiffInDays(previousDateKey: string, nextDateKey: string) {
+  return Math.round((getDateKeyTime(nextDateKey) - getDateKeyTime(previousDateKey)) / MS_PER_DAY);
+}
+
+function getActiveStreak(streak: number, lastStudyDate: string | null) {
+  const lastStudyDateKey = normalizeStudyDateKey(lastStudyDate);
+
+  if (streak <= 0) {
+    return 0;
+  }
+
+  if (!lastStudyDateKey) {
+    return streak;
+  }
+
+  const daysSinceLastStudy = getDateKeyDiffInDays(lastStudyDateKey, toLocalDateKey());
+
+  return daysSinceLastStudy <= 1 ? streak : 0;
+}
+
+function getNextStudyStreak(streak: number, lastStudyDate: string | null, studyDateKey: string) {
+  const lastStudyDateKey = normalizeStudyDateKey(lastStudyDate);
+
+  if (!lastStudyDateKey) {
+    return 1;
+  }
+
+  const daysSinceLastStudy = getDateKeyDiffInDays(lastStudyDateKey, studyDateKey);
+
+  if (daysSinceLastStudy === 0) {
+    return Math.max(1, streak);
+  }
+
+  if (daysSinceLastStudy === 1) {
+    return streak + 1;
+  }
+
+  return 1;
+}
+
 export const appStorage = {
   async getProgress(): Promise<AppProgress> {
     const [
@@ -166,6 +239,7 @@ export const appStorage = {
       learnedWordsCount,
       practicedSentencesCount,
       writingPracticeCount,
+      lastStudyDate,
     ] =
       await Promise.all([
         getBoolean(STORAGE_KEYS.hasCompletedOnboarding, defaultProgress.hasCompletedOnboarding),
@@ -178,13 +252,14 @@ export const appStorage = {
           defaultProgress.practicedSentencesCount
         ),
         getNumber(STORAGE_KEYS.writingPracticeCount, defaultProgress.writingPracticeCount),
+        AsyncStorage.getItem(STORAGE_KEYS.lastStudyDate),
       ]);
 
     return {
       hasCompletedOnboarding,
       hasCompletedLevelTest,
       userLevel: parseUserLevel(userLevel),
-      streak,
+      streak: getActiveStreak(streak, lastStudyDate),
       learnedWordsCount,
       practicedSentencesCount,
       writingPracticeCount,
@@ -234,7 +309,7 @@ export const appStorage = {
     return {
       completedLessonIds: parseStringArray(completedLessonIds),
       currentLessonDay: Math.max(1, currentLessonDay),
-      lastStudyDate,
+      lastStudyDate: normalizeStudyDateKey(lastStudyDate),
     };
   },
 
@@ -362,16 +437,25 @@ export const appStorage = {
   },
 
   async completeDailyLesson(wordCount: number, sentenceCount: number): Promise<AppProgress> {
-    const currentProgress = await this.getProgress();
+    const [currentProgress, lessonProgress] = await Promise.all([
+      this.getProgress(),
+      this.getLessonProgress(),
+    ]);
+    const studyDateKey = toLocalDateKey();
     const nextProgress: AppProgress = {
       ...currentProgress,
-      streak: currentProgress.streak + 1,
+      streak: getNextStudyStreak(
+        currentProgress.streak,
+        lessonProgress.lastStudyDate,
+        studyDateKey
+      ),
       learnedWordsCount: currentProgress.learnedWordsCount + wordCount,
       practicedSentencesCount: currentProgress.practicedSentencesCount + sentenceCount,
       writingPracticeCount: currentProgress.writingPracticeCount,
     };
 
     await Promise.all([
+      this.setLastStudyDate(studyDateKey),
       this.setStreak(nextProgress.streak),
       this.setLearnedWordsCount(nextProgress.learnedWordsCount),
       this.setPracticedSentencesCount(nextProgress.practicedSentencesCount),
@@ -389,9 +473,14 @@ export const appStorage = {
     const completedLessonIds = hasCompletedLesson
       ? lessonProgress.completedLessonIds
       : [...lessonProgress.completedLessonIds, lesson.id];
+    const studyDateKey = toLocalDateKey();
     const nextProgress: AppProgress = {
       ...currentProgress,
-      streak: hasCompletedLesson ? currentProgress.streak : currentProgress.streak + 1,
+      streak: getNextStudyStreak(
+        currentProgress.streak,
+        lessonProgress.lastStudyDate,
+        studyDateKey
+      ),
       learnedWordsCount:
         currentProgress.learnedWordsCount + (hasCompletedLesson ? 0 : lesson.words.length),
       practicedSentencesCount:
@@ -407,7 +496,7 @@ export const appStorage = {
           ? lessonProgress.currentLessonDay
           : Math.max(lessonProgress.currentLessonDay, lesson.dayNumber + 1)
       ),
-      this.setLastStudyDate(new Date().toISOString()),
+      this.setLastStudyDate(studyDateKey),
       this.setStreak(nextProgress.streak),
       this.setLearnedWordsCount(nextProgress.learnedWordsCount),
       this.setPracticedSentencesCount(nextProgress.practicedSentencesCount),

@@ -135,7 +135,7 @@ export default function SettingsScreen() {
               Reset toàn bộ tiến độ
             </AppText>
             <AppText color={colors.textMuted}>
-              Xoá onboarding, test, chỉ số tiến độ, word progress, bài đã hoàn thành và ngày học hiện tại.
+              Xoá onboarding, test, chỉ số tiến độ, word progress, bài đã hoàn thành và lesson hiện tại.
             </AppText>
           </View>
           <AppButton
